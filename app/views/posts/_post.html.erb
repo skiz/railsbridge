@@ -1,0 +1,20 @@
+
+
+<div class="post">
+  <h4><%= link_to post.title, post %></h4>
+  <p>
+  <%= post.content %>
+  </p>
+  <p>
+  by <%= post.user.email %>
+  at <%= post.created_at %>
+</p>
+<p>
+<%= display_reply_count(post) %>
+</p>
+
+
+<%= link_to "comment", 
+  new_post_reply_path(post) %>
+</div>
+

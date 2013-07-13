@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Message Board</a>
+        <ul class="nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><%= link_to "New Post", new_post_path %></li>
+          <li><%= link_to "My Account", edit_user_registration_path %></li>
+        </ul>
+        <p class="navbar-text pull-right">
+        <% if user_signed_in? %>
+          <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
